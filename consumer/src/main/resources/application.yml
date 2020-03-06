@@ -1,0 +1,9 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: consumer-demo
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ssh.benxincaomu.com.cn:8848

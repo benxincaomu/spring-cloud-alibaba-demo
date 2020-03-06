@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+	<Properties>
+		<Property name="PID">????</Property>
+		<Property name="CONSOLE_LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss} %5p  [%t] %c{1.} : %m (%F:%L)%n</Property>
+		<Property name="FILE_LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss} %5p  [%t] %c{1.} : %m %n</Property>
+        
+	</Properties>
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT" follow="true">
+			<PatternLayout pattern="${CONSOLE_LOG_PATTERN}" />
+		</Console>
+		<RollingFile name="RollingFileInfo" fileName="/data/logs/user-ldap/app.log" filePattern="/data/logs/user-ldap/app-%d{yyyy-MM-dd}-%i.log">
+			<PatternLayout pattern="${FILE_LOG_PATTERN}" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="20 MB" />
+			</Policies>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Logger name="org.hibernate.validator.internal.util.Version" level="warn" />
+		<Logger name="org.apache.coyote.http11.Http11NioProtocol" level="warn" />
+		<Logger name="org.apache.tomcat.util.net.NioSelectorPool" level="warn" />
+		<Root level="info">
+			<AppenderRef ref="Console" />
+			<!-- <AppenderRef ref="RollingFileInfo"/> -->
+		</Root>
+	</Loggers>
+</Configuration>

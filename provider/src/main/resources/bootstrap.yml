@@ -1,0 +1,20 @@
+spring: 
+    cloud:
+        nacos:
+            discovery:
+                enabled: true
+                server-addr: 127.0.0.1:8848
+                username: nacos
+                password: nacos
+            config:
+                enabled: true
+                server-addr: 127.0.0.1:8848
+                context-path: /nacos
+                username: nacos
+                password: nacos
+                namespace: 8449fb33-e633-43c2-ac19-a201933146ed
+                shared-configs:
+                   - app.yml
+                   - provider-demo.properties
+                #file-extension: yaml
+                refresh-enabled: true
